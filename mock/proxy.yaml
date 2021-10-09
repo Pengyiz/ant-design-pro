@@ -1,0 +1,377 @@
+# ★第一部分，系统配置
+port: 7890        # HTTP 代理端口
+socks-port: 7891  # SOCKS5 代理端口
+mixed-port: 1080  # HTTP and SOCKS5 代理 混合端口
+redir-port: 7892 # 透明代理端口, Linux and macOS 使用，包括Openwrt
+allow-lan: false
+bind-address: "*" # 是否允许局域网连接，bind-address: "*" 代表允许所有
+mode: "rule"        # 运行模式，rule 规则 / global 全局 / direct 直连
+log-level: "silent" # info / warning / error / debug / silent # silent 表示静默
+#interface-name: 本地连接            # 出口网卡名称，例如“本地连接”，Tun 模式使用
+ipv6: false                          # true 启用，false 关闭
+external-controller: "0.0.0.0:9090"  # 面板调用地址为 本机ip:9090 或 http://clash.razord.top
+
+
+
+# ★第二部分，DNS配置
+# 下方为DNS配置，如无此段，关闭DNS功能，此段设置与规则配合使用
+# 本模板用域名白名单分流，小白谨慎修改DNS，114.114.114.114 可替换为从ISP自动获取的地址
+dns:
+  enable: true                     # true 启用，false 关闭
+  listen: 0.0.0.0:53             # 监听端口，openwrt转发端口注意
+
+  # 仅填写 DNS 服务器的 IP 地址
+  default-nameserver:
+    - 1.2.4.8
+    - 223.5.5.5
+    - 114.114.114.114
+    - 119.29.29.29
+  enhanced-mode: redir-host # 或 fake-ip
+  fake-ip-range: 198.18.0.1/16 # Fake IP 地址池 (CIDR 形式)
+   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+  fake-ip-filter:
+    # 以下域名列表参考自 vernesong/OpenClash 项目，并由 Hackl0us 整理补充
+    # === LAN ===
+    - '*.lan'
+    # === Linksys Wireless Router ===
+    - '*.linksys.com'
+    - '*.linksyssmartwifi.com'
+    # === Apple Software Update Service ===
+    - 'swscan.apple.com'
+    - 'mesu.apple.com'
+    # === Windows 10 Connnect Detection ===
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    # === NTP Service ===
+    - 'time.*.com'
+    - 'time.*.gov'
+    - 'time.*.edu.cn'
+    - 'time.*.apple.com'
+
+    - 'time1.*.com'
+    - 'time2.*.com'
+    - 'time3.*.com'
+    - 'time4.*.com'
+    - 'time5.*.com'
+    - 'time6.*.com'
+    - 'time7.*.com'
+
+    - 'ntp.*.com'
+    - 'ntp.*.com'
+    - 'ntp1.*.com'
+    - 'ntp2.*.com'
+    - 'ntp3.*.com'
+    - 'ntp4.*.com'
+    - 'ntp5.*.com'
+    - 'ntp6.*.com'
+    - 'ntp7.*.com'
+
+    - '*.time.edu.cn'
+    - '*.ntp.org.cn'
+    - '+.pool.ntp.org'
+
+    - 'time1.cloud.tencent.com'
+    # === Music Service ===
+    ## NetEase
+    - '+.music.163.com'
+    - '*.126.net'
+    ## Baidu
+    - 'musicapi.taihe.com'
+    - 'music.taihe.com'
+    ## Kugou
+    - 'songsearch.kugou.com'
+    - 'trackercdn.kugou.com'
+    ## Kuwo
+    - '*.kuwo.cn'
+    ## JOOX
+    - 'api-jooxtt.sanook.com'
+    - 'api.joox.com'
+    - 'joox.com'
+    ## QQ
+    - '+.y.qq.com'
+    - '+.music.tc.qq.com'
+    - 'aqqmusic.tc.qq.com'
+    - '+.stream.qqmusic.qq.com'
+    ## Xiami
+    - '*.xiami.com'
+    ## Migu
+    - '+.music.migu.cn'
+    # === Game Service ===
+    ## Nintendo Switch
+    - '+.srv.nintendo.net'
+    ## Sony PlayStation
+    - '+.stun.playstation.net'
+    ## Microsoft Xbox
+    - 'xbox.*.microsoft.com'
+    - '+.xboxlive.com'
+    # === Other ===
+    ## QQ Quick Login
+    - 'localhost.ptlogin2.qq.com'
+    ## Golang
+    - 'proxy.golang.org'
+    ## STUN Server
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+
+
+
+
+# ★第三部分，代理配置
+######################################################★注意，★★替换
+proxies:                                             # 自建节点列表
+  # ★V2ray 自建节点 1  ★Vmess+TLS+Websocket 方式
+  - name: "🇭🇰 香港节点"                               # 节点名，与下方组设置一致，否则报错
+    type: vmess                                      # 节点类型
+    server: mock.percyz.cn                           # ★★服务器，替换为你自己的
+    port: 443
+    uuid: 98e5a41e-08ad-2e46-f579-ff18a5a9ec62       # ★★UUID，替换为你自己的
+    alterId: 32
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    network: ws
+    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的
+
+  # ★V2ray 自建节点 2  ★Vmess+TLS+Websocket 方式
+  - name: "🇭🇰 香港备用"                               # 节点名，与下方组设置一致，否则报错
+    type: vmess                                      # 节点类型
+    server: kaneki.doomo.club                        # ★★服务器，替换为你自己的
+    port: 443
+    uuid: 0448cd9e-e41e-45ad-9699-fe02e73c5591       # ★★UUID，替换为你自己的
+    alterId: 5
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    network: ws
+    ws-path: /cyberpunk2077                          # ★★websocket路径，替换为你自己的
+
+  # ★V2ray 自建节点 3  ★Vmess+TLS+Websocket 方式
+  - name: "🇰🇷 韩国节点"                               # 节点名，与下方组设置一致，否则报错
+    type: vmess                                      # 节点类型
+    server: kr-cyber.percyz.cn                       # ★★服务器，替换为你自己的
+    port: 443
+    uuid: 526bf224-3021-4d4f-5010-081a69225023       # ★★UUID，替换为你自己的
+    alterId: 32
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    network: ws
+    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
+
+  # ★V2ray 自建节点 4  ★Vmess+TLS+Websocket 方式
+  - name: "🇯🇵 日本节点"                               # 节点名，与下方组设置一致，否则报错
+    type: vmess                                      # 节点类型
+    server: jp-cyber.percyz.cn                       # ★★服务器，替换为你自己的
+    port: 443
+    uuid: 2718b828-7abf-30ca-cfc2-5f4aa551d897       # ★★UUID，替换为你自己的
+    alterId: 32
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    network: ws
+    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
+
+  # ★V2ray 自建节点 5  ★Vmess+TLS+Websocket 方式
+  - name: "🇺🇸 美国节点"                               # 节点名，与下方组设置一致，否则报错
+    type: vmess                                      # 节点类型
+    server: us-cyber.percyz.cn                       # ★★服务器，替换为你自己的
+    port: 443
+    uuid: 0944d2b1-cf06-3daa-3f08-76606c4e8bde       # ★★UUID，替换为你自己的
+    alterId: 32
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    network: ws
+    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
+
+  # ★V2ray 自建节点4   ★Vmess+TLS+Websocket 方式
+  - name: "🇦🇺 澳洲节点"                               # 节点名，与下方组设置一致，否则报错
+    type: vmess                                      # 节点类型
+    server: cyber.percyz.cn                          # ★★服务器，替换为你自己的
+    port: 443
+    uuid: fbb45052-21a8-345c-e3e2-13c47065f0ce       # ★★UUID，替换为你自己的
+    alterId: 32
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    network: ws
+    ws-path: /punk2077                               # ★★websocket路径，替换为你自己的
+
+
+
+proxy-groups:                                      # 代理组列表
+
+  - name: "🔰 节点选择"                             # ★组名，包含下面的（节点/组）
+    type: select                                   # select 表示手动切换，默认proxies第一个
+    proxies:                                       # 代理节点（组）列表
+      - "🇭🇰 香港节点"                               # 节点名  与上方设置一致，否则报错
+      - "🇭🇰 香港备用"                               # 节点名，与上方设置一致，否则报错
+      - "🇰🇷 韩国节点"                               # 节点名，与上方设置一致，否则报错
+      - "🇯🇵 日本节点"                               # 节点名，与上方设置一致，否则报错
+      - "🇺🇸 美国节点"                               # 节点名，与上方设置一致，否则报错
+      - "🇦🇺 澳洲节点"                               # 节点名，与上方设置一致，否则报错
+ 
+
+# ★第四部分，规则配置
+###规则集来自★Loyalsoldier★大神
+###默认关闭规则自动更新，启用去掉url行最前面的#，仅删除#，不要删除空格
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  greatfire:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/greatfire.txt"
+    path: ./ruleset/greatfire.yaml
+    interval: 86400
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+rules:
+  - PROCESS-NAME,v2ray,DIRECT
+  - PROCESS-NAME,xray,DIRECT
+  - PROCESS-NAME,naive,DIRECT
+  - PROCESS-NAME,trojan,DIRECT
+  - PROCESS-NAME,trojan-go,DIRECT
+  - PROCESS-NAME,ss-local,DIRECT
+  - PROCESS-NAME,privoxy,DIRECT
+  - PROCESS-NAME,leaf,DIRECT
+  - PROCESS-NAME,v2ray.exe,DIRECT
+  - PROCESS-NAME,xray.exe,DIRECT
+  - PROCESS-NAME,naive.exe,DIRECT
+  - PROCESS-NAME,trojan.exe,DIRECT
+  - PROCESS-NAME,trojan-go.exe,DIRECT
+  - PROCESS-NAME,ss-local.exe,DIRECT
+  - PROCESS-NAME,privoxy.exe,DIRECT
+  - PROCESS-NAME,leaf.exe,DIRECT
+  - PROCESS-NAME,Surge,DIRECT
+  - PROCESS-NAME,Surge 2,DIRECT
+  - PROCESS-NAME,Surge 3,DIRECT
+  - PROCESS-NAME,Surge 4,DIRECT
+  - PROCESS-NAME,Surge%202,DIRECT
+  - PROCESS-NAME,Surge%203,DIRECT
+  - PROCESS-NAME,Surge%204,DIRECT
+  - PROCESS-NAME,Thunder,DIRECT
+  - PROCESS-NAME,DownloadService,DIRECT
+  - PROCESS-NAME,qBittorrent,DIRECT
+  - PROCESS-NAME,Transmission,DIRECT
+  - PROCESS-NAME,fdm,DIRECT
+  - PROCESS-NAME,aria2c,DIRECT
+  - PROCESS-NAME,Folx,DIRECT
+  - PROCESS-NAME,NetTransport,DIRECT
+  - PROCESS-NAME,uTorrent,DIRECT
+  - PROCESS-NAME,WebTorrent,DIRECT
+  - PROCESS-NAME,aria2c.exe,DIRECT
+  - PROCESS-NAME,BitComet.exe,DIRECT
+  - PROCESS-NAME,fdm.exe,DIRECT
+  - PROCESS-NAME,NetTransport.exe,DIRECT
+  - PROCESS-NAME,qbittorrent.exe,DIRECT
+  - PROCESS-NAME,Thunder.exe,DIRECT
+  - PROCESS-NAME,ThunderVIP.exe,DIRECT
+  - PROCESS-NAME,transmission-daemon.exe,DIRECT
+  - PROCESS-NAME,transmission-qt.exe,DIRECT
+  - PROCESS-NAME,uTorrent.exe,DIRECT
+  - PROCESS-NAME,WebTorrent.exe,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,DIRECT
+  - RULE-SET,proxy,🔰 节点选择
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,telegramcidr,🔰 节点选择
+  - GEOIP,,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🔰 节点选择
