@@ -138,18 +138,18 @@ proxies:                                             # 自建节点列表
     ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的
 
   # ★V2ray 自建节点 2  ★Vmess+TLS+Websocket 方式
-  - name: "🇭🇰 香港备用"                               # 节点名，与下方组设置一致，否则报错
+  - name: "🇰🇷 韩国ARM"                               # 节点名，与下方组设置一致，否则报错
     type: vmess                                      # 节点类型
-    server: kaneki.doomo.club                        # ★★服务器，替换为你自己的
+    server: kr-amber.percyz.cn                       # ★★服务器，替换为你自己的
     port: 443
-    uuid: 0448cd9e-e41e-45ad-9699-fe02e73c5591       # ★★UUID，替换为你自己的
+    uuid: d420288f-5734-d14b-6261-c0dfc851d027       # ★★UUID，替换为你自己的
     alterId: 5
     cipher: auto
     udp: true
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /cyberpunk2077                          # ★★websocket路径，替换为你自己的
+    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的
 
   # ★V2ray 自建节点 3  ★Vmess+TLS+Websocket 方式
   - name: "🇰🇷 韩国节点"                               # 节点名，与下方组设置一致，否则报错
@@ -215,7 +215,7 @@ proxy-groups:                                      # 代理组列表
     type: select                                   # select 表示手动切换，默认proxies第一个
     proxies:                                       # 代理节点（组）列表
       - "🇭🇰 香港节点"                               # 节点名  与上方设置一致，否则报错
-      - "🇭🇰 香港备用"                               # 节点名，与上方设置一致，否则报错
+      - "🇰🇷 韩国ARM"                               # 节点名，与上方设置一致，否则报错
       - "🇰🇷 韩国节点"                               # 节点名，与上方设置一致，否则报错
       - "🇯🇵 日本节点"                               # 节点名，与上方设置一致，否则报错
       - "🇺🇸 美国节点"                               # 节点名，与上方设置一致，否则报错
