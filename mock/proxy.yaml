@@ -193,6 +193,20 @@ proxies:                                             # 自建节点列表
     network: ws
     ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
 
+  # ★V2ray 自建节点 5  ★Vmess+TLS+Websocket 方式
+  - name: "🇺🇸 美国ARM"                                # 节点名，与下方组设置一致，否则报错
+    type: vmess                                      # 节点类型
+    server: us-amber.percyz.com                      # ★★服务器，替换为你自己的
+    port: 443
+    uuid: c087b4d6-1493-9a74-1f95-7622bb1c7bfc       # ★★UUID，替换为你自己的
+    alterId: 32
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    network: ws
+    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的 
+
   # ★V2ray 自建节点4   ★Vmess+TLS+Websocket 方式
   - name: "🇦🇺 澳洲节点"                               # 节点名，与下方组设置一致，否则报错
     type: vmess                                      # 节点类型
