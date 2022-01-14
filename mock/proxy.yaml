@@ -129,7 +129,7 @@ proxies:                                             # 自建节点列表
     server: hk-cyber.percyz.com                      # ★★服务器，替换为你自己的
     port: 443
     uuid: 98e5a41e-08ad-2e46-f579-ff18a5a9ec62       # ★★UUID，替换为你自己的
-    alterId: 32
+    alterId: 0
     cipher: auto
     udp: true
     tls: true
@@ -157,7 +157,7 @@ proxies:                                             # 自建节点列表
     server: kr-amber.percyz.com                      # ★★服务器，替换为你自己的
     port: 443
     uuid: d420288f-5734-d14b-6261-c0dfc851d027       # ★★UUID，替换为你自己的
-    alterId: 5
+    alterId: 0
     cipher: auto
     udp: true
     tls: true
