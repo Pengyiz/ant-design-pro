@@ -135,7 +135,8 @@ proxies:                                             # 自建节点列表
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的
+    ws-opts:
+      path: /cyberpunk                              # ★★websocket路径，替换为你自己的
 
   # ★V2ray 自建节点 2  ★Vmess+TLS+Websocket 方式
   - name: "🇰🇷 韩国节点"                               # 节点名，与下方组设置一致，否则报错
@@ -149,7 +150,8 @@ proxies:                                             # 自建节点列表
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
+    ws-opts:
+      path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
 
   # ★V2ray 自建节点 3  ★Vmess+TLS+Websocket 方式
   - name: "🇰🇷 韩国ARM"                               # 节点名，与下方组设置一致，否则报错
@@ -163,7 +165,8 @@ proxies:                                             # 自建节点列表
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的
+    ws-opts:
+      path: /cyberpunk                              # ★★websocket路径，替换为你自己的
 
   # ★V2ray 自建节点 4  ★Vmess+TLS+Websocket 方式
   - name: "🇯🇵 日本节点"                               # 节点名，与下方组设置一致，否则报错
@@ -177,7 +180,8 @@ proxies:                                             # 自建节点列表
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
+    ws-opts:
+      path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
 
   # ★V2ray 自建节点 5  ★Vmess+TLS+Websocket 方式
   - name: "🇯🇵 日本ARM"                               # 节点名，与下方组设置一致，否则报错
@@ -191,7 +195,8 @@ proxies:                                             # 自建节点列表
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
+    ws-opts:
+      path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
 
   # ★V2ray 自建节点 6  ★Vmess+TLS+Websocket 方式
   - name: "🇺🇸 美国节点"                               # 节点名，与下方组设置一致，否则报错
@@ -205,7 +210,8 @@ proxies:                                             # 自建节点列表
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
+    ws-opts:
+      path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
 
   # ★V2ray 自建节点 7  ★Vmess+TLS+Websocket 方式
   - name: "🇺🇸 美国ARM"                                # 节点名，与下方组设置一致，否则报错
@@ -219,7 +225,8 @@ proxies:                                             # 自建节点列表
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /cyberpunk                              # ★★websocket路径，替换为你自己的 
+    ws-opts:
+      path: /cyberpunk                              # ★★websocket路径，替换为你自己的 
 
   # ★V2ray 自建节点8   ★Vmess+TLS+Websocket 方式
   - name: "🇦🇺 澳洲ARM"                               # 节点名，与下方组设置一致，否则报错
@@ -233,7 +240,8 @@ proxies:                                             # 自建节点列表
     tls: true
     skip-cert-verify: false
     network: ws
-    ws-path: /punk2077                               # ★★websocket路径，替换为你自己的
+    ws-opts:
+      path: /punk2077                               # ★★websocket路径，替换为你自己的
 
 proxy-providers:
   NeteaseMusic:
