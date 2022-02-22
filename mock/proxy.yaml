@@ -144,7 +144,7 @@ proxies:                                             # 自建节点列表
     server: kr-cyber.percyz.com                      # ★★服务器，替换为你自己的
     port: 443
     uuid: 526bf224-3021-4d4f-5010-081a69225023       # ★★UUID，替换为你自己的
-    alterId: 32
+    alterId: 0
     cipher: auto
     udp: true
     tls: true
@@ -174,7 +174,7 @@ proxies:                                             # 自建节点列表
     server: jp-cyber.percyz.com                      # ★★服务器，替换为你自己的
     port: 443
     uuid: 2718b828-7abf-30ca-cfc2-5f4aa551d897       # ★★UUID，替换为你自己的
-    alterId: 32
+    alterId: 0
     cipher: auto
     udp: true
     tls: true
@@ -189,7 +189,7 @@ proxies:                                             # 自建节点列表
     server: jp-amber.percyz.com                      # ★★服务器，替换为你自己的
     port: 443
     uuid: 2dc2f8c4-35bf-e412-b699-f7355f744011       # ★★UUID，替换为你自己的
-    alterId: 32
+    alterId: 0
     cipher: auto
     udp: true
     tls: true
@@ -204,7 +204,7 @@ proxies:                                             # 自建节点列表
     server: us-cyber.percyz.com                      # ★★服务器，替换为你自己的
     port: 443
     uuid: 0944d2b1-cf06-3daa-3f08-76606c4e8bde       # ★★UUID，替换为你自己的
-    alterId: 32
+    alterId: 0
     cipher: auto
     udp: true
     tls: true
@@ -219,7 +219,7 @@ proxies:                                             # 自建节点列表
     server: us-amber.percyz.com                      # ★★服务器，替换为你自己的
     port: 443
     uuid: c087b4d6-1493-9a74-1f95-7622bb1c7bfc       # ★★UUID，替换为你自己的
-    alterId: 32
+    alterId: 0
     cipher: auto
     udp: true
     tls: true
