@@ -234,7 +234,7 @@ proxies:                                             # 自建节点列表
     server: cyber.percyz.com                         # ★★服务器，替换为你自己的
     port: 443
     uuid: fbb45052-21a8-345c-e3e2-13c47065f0ce       # ★★UUID，替换为你自己的
-    alterId: 32
+    alterId: 0
     cipher: auto
     udp: true
     tls: true
