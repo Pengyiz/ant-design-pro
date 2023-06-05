@@ -123,157 +123,43 @@ dns:
 # ★第三部分，代理配置
 ######################################################★注意，★★替换
 proxies:                                             # 自建节点列表
-  # ★V2ray 自建节点 1  ★Vmess+TLS+Websocket 方式
-  - name: "🇭🇰 香港节点"                               # 节点名，与下方组设置一致，否则报错
-    type: vmess                                      # 节点类型
-    server: hk-cyber.percyz.com                      # ★★服务器，替换为你自己的
+    # ★V2ray 自建节点1   ★Vless Vision Reality 方式
+  - name: "🇰🇷 韩国节点"
+    server: 146.56.96.47
+    type: vless
     port: 443
-    uuid: 98e5a41e-08ad-2e46-f579-ff18a5a9ec62       # ★★UUID，替换为你自己的
-    alterId: 0
-    cipher: auto
+    uuid: 44536197-81cd-46c7-827b-7f40a0d5d4d4
+    network: tcp
+    servername: osxapps.itunes.apple.com
+    flow: xtls-rprx-vision
     udp: true
     tls: true
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: /cyberpunk                              # ★★websocket路径，替换为你自己的
+    reality-opts:
+      public-key: 0BSTdPI1SoKDbFW7pX3dSvIzs9eAKSjuzwT7iwKOFxE
+    client-fingerprint: chrome
 
-  # ★V2ray 自建节点 2  ★Vmess+TLS+Websocket 方式
-  - name: "🇰🇷 韩国节点"                               # 节点名，与下方组设置一致，否则报错
-    type: vmess                                      # 节点类型
-    server: kr-cyber.percyz.com                      # ★★服务器，替换为你自己的
+  # ★V2ray 自建节点2   ★Vless Vision Reality 方式
+  - name: "🇦🇺 澳洲节点"
+    server: 152.69.178.179
+    type: vless
     port: 443
-    uuid: 526bf224-3021-4d4f-5010-081a69225023       # ★★UUID，替换为你自己的
-    alterId: 0
-    cipher: auto
+    uuid: eeba6f31-8aed-4cf8-896a-b0a1974784c4
+    network: tcp
+    servername: swcdn.apple.com
+    flow: xtls-rprx-vision
     udp: true
     tls: true
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
-
-  # ★V2ray 自建节点 3  ★Vmess+TLS+Websocket 方式
-  - name: "🇰🇷 韩国ARM"                               # 节点名，与下方组设置一致，否则报错
-    type: vmess                                      # 节点类型
-    server: kr-amber.percyz.com                      # ★★服务器，替换为你自己的
-    port: 443
-    uuid: d420288f-5734-d14b-6261-c0dfc851d027       # ★★UUID，替换为你自己的
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: /cyberpunk                              # ★★websocket路径，替换为你自己的
-
-  # ★V2ray 自建节点 4  ★Vmess+TLS+Websocket 方式
-  - name: "🇯🇵 日本节点"                               # 节点名，与下方组设置一致，否则报错
-    type: vmess                                      # 节点类型
-    server: jp-cyber.percyz.com                      # ★★服务器，替换为你自己的
-    port: 443
-    uuid: 2718b828-7abf-30ca-cfc2-5f4aa551d897       # ★★UUID，替换为你自己的
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
-
-  # ★V2ray 自建节点 5  ★Vmess+TLS+Websocket 方式
-  - name: "🇯🇵 日本ARM"                               # 节点名，与下方组设置一致，否则报错
-    type: vmess                                      # 节点类型
-    server: jp-amber.percyz.com                      # ★★服务器，替换为你自己的
-    port: 443
-    uuid: 2dc2f8c4-35bf-e412-b699-f7355f744011       # ★★UUID，替换为你自己的
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
-
-  # ★V2ray 自建节点 6  ★Vmess+TLS+Websocket 方式
-  - name: "🇺🇸 美国节点"                               # 节点名，与下方组设置一致，否则报错
-    type: vmess                                      # 节点类型
-    server: us-cyber.percyz.com                      # ★★服务器，替换为你自己的
-    port: 443
-    uuid: 0944d2b1-cf06-3daa-3f08-76606c4e8bde       # ★★UUID，替换为你自己的
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: /cyberpunk                              # ★★websocket路径，替换为你自己的  
-
-  # ★V2ray 自建节点 7  ★Vmess+TLS+Websocket 方式
-  - name: "🇺🇸 美国ARM"                                # 节点名，与下方组设置一致，否则报错
-    type: vmess                                      # 节点类型
-    server: us-amber.percyz.com                      # ★★服务器，替换为你自己的
-    port: 443
-    uuid: c087b4d6-1493-9a74-1f95-7622bb1c7bfc       # ★★UUID，替换为你自己的
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: /cyberpunk                              # ★★websocket路径，替换为你自己的 
-
-  # ★V2ray 自建节点8   ★Vmess+TLS+Websocket 方式
-  - name: "🇦🇺 澳洲ARM"                               # 节点名，与下方组设置一致，否则报错
-    type: vmess                                      # 节点类型
-    server: cyber.percyz.com                         # ★★服务器，替换为你自己的
-    port: 443
-    uuid: fbb45052-21a8-345c-e3e2-13c47065f0ce       # ★★UUID，替换为你自己的
-    alterId: 0
-    cipher: auto
-    udp: true
-    tls: true
-    skip-cert-verify: false
-    network: ws
-    ws-opts:
-      path: /punk2077                               # ★★websocket路径，替换为你自己的
-
-proxy-providers:
-  NeteaseMusic:
-    type: http
-    path: ./Proxy/NeteaseMusic.yaml
-    url: https://cdn.jsdelivr.net/gh/DesperadoJ/Rules-for-UnblockNeteaseMusic/Clash/Proxy/NeteaseMusic.yaml
-    interval: 3600
-    health-check:
-      enable: true
-      url: http://www.gstatic.com/generate_204
-      interval: 300
+    reality-opts:
+      public-key: Jg5ZGxuBxqYuF5WptmeAwGLKCvKgUD4-M91C6BqXqGQ
+    client-fingerprint: chrome
 
 proxy-groups:                                      # 代理组列表
 
   - name: "🔰 节点选择"                             # ★组名，包含下面的（节点/组）
     type: select                                   # select 表示手动切换，默认proxies第一个
     proxies:                                       # 代理节点（组）列表
-      - "🇭🇰 香港节点"                               # 节点名  与上方设置一致，否则报错
-      - "🇰🇷 韩国ARM"                               # 节点名，与上方设置一致，否则报错
       - "🇰🇷 韩国节点"                               # 节点名，与上方设置一致，否则报错
-      - "🇯🇵 日本ARM"                               # 节点名，与上方设置一致，否则报错
-      - "🇯🇵 日本节点"                               # 节点名，与上方设置一致，否则报错
-      - "🇺🇸 美国ARM"                               # 节点名，与上方设置一致，否则报错
-      - "🇺🇸 美国节点"                               # 节点名，与上方设置一致，否则报错
-      - "🇦🇺 澳洲ARM"                               # 节点名，与上方设置一致，否则报错
-      
-  - name: 🎵 网易云音乐
-    type: select
-    use:
-      - NeteaseMusic
-    proxies:
-      - DIRECT
+      - "🇦🇺 澳洲节点"                               # 节点名，与上方设置一致，否则报错
  
 # ★第四部分，规则配置
 ###规则集来自★Loyalsoldier★大神
@@ -377,18 +263,7 @@ rule-providers:
     path: ./ruleset/applications.yaml
     interval: 86400
 
-  NeteaseMusic:
-    type: http
-    behavior: classical
-    path: ./RuleSet/NeteaseMusic.yaml
-    url: https://cdn.jsdelivr.net/gh/DesperadoJ/Rules-for-UnblockNeteaseMusic/Clash/RuleSet/NeteaseMusic.yaml
-    interval: 86400
-
 rules:
-  - DOMAIN,admusicpic.music.126.net,REJECT
-  - DOMAIN,iadmat.nosdn.127.net,REJECT
-  - DOMAIN,iadmusicmat.music.126.net,REJECT
-  - DOMAIN,iadmusicmatvideo.music.126.net,REJECT
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
@@ -397,7 +272,6 @@ rules:
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,google,DIRECT
-  - RULE-SET,NeteaseMusic,🎵 网易云音乐
   - RULE-SET,proxy,🔰 节点选择
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
